@@ -4,9 +4,9 @@ node {
         echo "aaaaaa"
     }
     
-    stage('Front End'){
+    stage('Back End'){
         docker.image('maven:3-alpine').inside {
-            sh 'mvn --version   
+            sh 'mvn --version'
         }
     }
     
