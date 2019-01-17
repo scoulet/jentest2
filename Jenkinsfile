@@ -3,8 +3,16 @@ node {
         checkout scm
         echo "aaaaaa"
     }
-    docker.image('node:7-alpine').inside {
-        stage('Test')
-        sh 'node --version'
+    
+    stage('Front End'){
+        docker.image('maven:3-alpine').inside {
+            sh 'mvn --version   
+        }
+    }
+    
+    stage('Front End') {
+        docker.image('node:7-alpine').inside {
+            sh 'node --version'
+        }
     }
 }
