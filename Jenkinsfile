@@ -4,15 +4,9 @@ node {
         echo "aaaaaa"
     }
     
-    stage('Back End'){
-        docker.image('maven:3-alpine').inside {
-            sh 'mvn --version'
-        }
+    stage('Deploy'){
+        deploydocker = docker.build("scoulet/jendocktest")
+        sh 'docker run -e VAR="d" scoulet/jendocktest'
     }
-    
-    stage('Front End') {
-        docker.image('node:7-alpine').inside {
-            sh 'node --version'
-        }
-    }
+
 }
